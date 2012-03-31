@@ -14,8 +14,17 @@
 #        AUTHOR:   (), 
 #       COMPANY:  
 #       VERSION:  1.0
-#       CREATED:  03/30/2012 09:38:59 PM BRT
+#       CREATED:  03/30/2012 09:46:15 PM BRT
 #      REVISION:  ---
 #===============================================================================
+
+
+# Creating the f.lux temp directory and download the xflux binary 
+
+mkdir /tmp/f.lux
+
+cd /tmp/f.lux
+
+wget http://secure.herf.org/flux/xflux.tgz
 
 
