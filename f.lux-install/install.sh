@@ -34,7 +34,7 @@ read Maps
 
 cd $TheDir 
 
-curl ""
+wget "http://maps.google.com/maps/api/geocode/xml?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&sensor=false"
 
 #Looking for four keywords in here
 for key in changelog lat lng
@@ -49,5 +49,7 @@ lng=( `echo ${lng}` )
 
 echo ${lng[@]} | awk -F">" '{print $2}' | awk -F"<" '{print $1}'
 echo ${lat[@]} | awk -F">" '{print $2}' | awk -F"<" '{print $1}'
+
+
 
 
