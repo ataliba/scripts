@@ -18,6 +18,11 @@
 
 TheDir=/tmp/f.lux
 
+# Testing if wget and lynx is installed on this system 
+
+type wget  >/dev/null 2>&1 || { echo >&2 "Wget is required. Install this and run this program again."; exit 1; }
+type lynx >/dev/null 2>&1 || { echo >&2 "Lynx is required. Install this program and run this again."; exit 1; }
+
 # Creating the f.lux temp directory and download the xflux binary 
 
 mkdir $TheDir 
