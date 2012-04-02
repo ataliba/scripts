@@ -1,0 +1,12 @@
+
+CREATE TABLE `sitesbarrabrasil` (
+`id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+`nome` VARCHAR( 50 ) ,
+`url` VARCHAR( 100 ) ,
+PRIMARY KEY ( `id` )
+);
+
+
+INSERT INTO sitesbarrabrasil(nome,url) VALUES('Ataliba Teixeira','http://www.ataliba.eti.br');
+
+
