@@ -1,0 +1,7 @@
+#/bin/bash
+
+echo -e '\033c'
+echo -e  '\033[44;31;1;5m --- Desconectando ----- \033[m'
+ppp-off
+
+

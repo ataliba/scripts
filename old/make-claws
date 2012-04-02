@@ -1,0 +1,18 @@
+#!/bin/bash
+# script criado para automatizar o processo de compilacao do
+# sylpheed-claws
+
+tar -xvjf sylpheed-$1\claws.tar.bz2 && \
+cd sylpheed-$1\claws && \
+./configure --enable-gpgme --enable-openssl \
+--enable-spamassassin-plugin  && \
+make && make install
+
+# caso voce queira mais opcoes sendo liberadas no sylpheed-claws eh so
+# ler o help do configure do programa e aumentar alguns enables na
+# linha de comando. caso nao saiba o que fazer, mande um mail
+# sintaxe da linha de comando (exemplo)
+# # make-claws 0.8.10
+
+
+

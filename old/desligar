@@ -1,0 +1,35 @@
+#/bin/bash
+
+case $1 in
+
+"-c")
+  echo -e '\033c'
+  echo -e  '\033[44;31;1;5m --- Desligando e desconectando o sistema ------ \033[m';
+  echo -e  '\033[44;31;1;5m --- Desconectando ------- \033[m';
+  ppp-off
+  echo -e  '\033[44;31;1;5m --- Desligando o sistema ------- \033[m';
+  shutdown -h now 
+  ;;
+
+"-rc")
+  echo -e '\033c'
+  echo -e '\033[44;31;1;5m ---- Reiniciando e Desconectando da internet ---- \033[m'
+  echo -e '\033[44;31;1;5m ---- Desconectando da internet ---- \033[m'
+  ppp-off
+  echo -e '\033[44;31;1;5m ---- Reiniciando o Sistema ----- \033[m'
+  shutdown -r now
+  ;;
+
+"-r")
+  echo -e '\033c'
+  echo -e '\033[44;31;1;5m ---- Reiniciando o sistema ----- \033[m'
+  shutdown -r now
+  ;;
+
+*) 
+ echo -e '\033c'
+ echo -e  '\033[44;31;1;5m --- Desligando o sistema ----- \033[m';
+ shutdown -h now 
+ ;;
+esac
+
