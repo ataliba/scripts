@@ -67,7 +67,10 @@ echo >> $HOME/bin/xflux
  
 # Installing the xflux binary
 
-mkdir $HOME/Utils
+if [ ! -d $HOME/Utils ]; then
+   mkdir $HOME/Utils
+fi
+
 mv $TheDir/xflux $HOME/Utils
 chmod 755 $HOME/Utils/xflux
 
