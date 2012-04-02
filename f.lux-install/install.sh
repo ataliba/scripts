@@ -85,6 +85,8 @@ echo "Terminal=false " >> $HOME/.config/autostart/Xflux.desktop
 echo "Hidden=false " >> $HOME/.config/autostart/Xflux.desktop
 
 
+rm -rf $TheDir
+
 echo "Xflux installed .... " 
 
 
