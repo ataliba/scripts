@@ -18,7 +18,7 @@
 # # chmod 755 /usr/local/bin/login_control
 # 
 # The default of this script is logout all the users try to connect more than one time on you Linux. 
-# But, if you need to permit more than one connect of a specific user, on the /etc/login_control file 
+# But, if you need to permit more than one connection of a specific user on the /etc/login_control file 
 # you need to put ( one per line ) the login and the number of connections of this user: 
 # Sintax: user:number of connections
 # Example: ataliba:2
@@ -27,6 +27,7 @@
 #
 # CHANGELOG ( MM/DD/YYYY)
 #
+#  ataliba  04/16/2012    - Remove the sleep function for security reasons
 #  ataliba 	04/16/2012		- First public version 
 #
 
@@ -46,8 +47,6 @@ if [ -z $LoginControl ]; then
  else
     if [ $Number -gt $LoginControl ]; then 
       echo "You account has $Number connections at this time. Your limit is $LoginControl connections."
-      sleep 3 
       exit
     fi
 fi
-
