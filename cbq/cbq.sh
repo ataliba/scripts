@@ -3,7 +3,6 @@
 #    cbq.init v0.7.4
 #    Copyright (C) 1999  Pavel Golubev <pg@ksi-linux.com>
 #    Copyright (C) 2001-2004  Lubomir Bulej <pallas@kadan.cz>
-#    Copyright (C) 2012       Ataliba Teixeira < http://github.com/ataliba >
 #
 #    chkconfig:   2345 11 89
 #    description: sets up CBQ-based traffic control
@@ -29,8 +28,6 @@
 #
 # VERSION HISTORY
 # ---------------
-# v0.7.4 - Ataliba Teixeira < http://github.com/ataliba > 
-#	   Fork the code to change something I need 
 # v0.7.3- Deepak Singhal <singhal at users.sourceforge.net>
 #	  - fix timecheck to not ignore regular TIME rules after
 #	    encountering a TIME rule that spans over midnight
