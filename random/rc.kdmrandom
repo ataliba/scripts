@@ -1,0 +1,39 @@
+#!/bin/bash
+# Description : THis script modifies the KDM Themes for other ramdomly
+# chosen. This script is based on GDM Ramdon Theme made by Ederson L.
+# Correia < ederson.correa at gmail dot com >.
+# Author : Ataliba Teixeira < ataliba at ataliba dot eti dot br > 
+#
+# Installation :
+# Copy this script to the directory /etc/rc.d and rename it to
+# rc.kdmrandom
+#
+# Open your rc.local with a editor and pyt this into :
+# if [ -x /etc/rc.d/rc.kdmrandom ]; then
+#    . /etc/rc.d/rc.kdmrandom
+# fi
+#
+# Search in your /etc/kde/kdm/kdmrc this line : 
+# UseTheme=true
+# Uncoment this line to use rc.kdmrandom
+#
+# License :
+# GPL v3
+#
+# This script is tested only on Slackware.
+# For other distros, like OpenSuSe, see this page later.
+
+echo -n "Choosing a random theme for you KDM ... " 
+
+THEME_DIR=/usr/share/apps/kdm/themes
+THEMES=`ls -1 "$THEME_DIR"`
+N=`echo $THEMES | wc -w`
+((N=RANDOM%N+1))
+
+# The -i.old option creates a backup copy called
+# kdmrc.old
+THEME=$(echo $THEMES | cut -d ' ' -f $N)
+sed -i.old "s|^Theme=.*|Theme=$THEME_DIR/$THEME|" /etc/kde/kdm/kdmrc
+
+echo " Enjoy your theme :-) "
+

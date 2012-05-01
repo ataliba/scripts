@@ -1,0 +1,47 @@
+#!/bin/bash
+# Description : This script modifies your XFCE Desktop background to
+# other randomly choosen. This script is based on GDM Random Theme by
+# Ederson L. Correa < ederson.correa at gmail dot com > 
+# 
+# Author : Ataliba Teixeira < ataliba at ataliba dot eti dot br > 
+# 
+# Installation :
+# Copy this script to the directory /etc/rc.d and rename it to
+# rc.xfcerandom
+#
+# Open your rc.local with a editor and pyt this into :
+# if [ -x /etc/rc.d/rc.xfcerandom ]; then
+#    . /etc/rc.d/rc.xfcerandom
+# fi
+# 
+# Don't forget to do this : 
+# chmod 755 /etc/rc.d/rc.xfcerandom
+#
+# License :
+# GPL v3
+#
+# This script is tested only on Slackware.
+# For other distros, like OpenSuSe, see this page later.
+
+echo -n "Choosing a random background for your XFCE ... " 
+
+YOUR_USER="ataliba" # preencha aqui com o seu usuario
+BACKGROUND_DIR=/home/$YOUR_USER/backgrounds # coloque ao final o diretório que irá conter seus backgrounds
+CONFIG_FILE=/home/$YOUR_USER/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
+
+BACKGROUND_1=$(grep image-path $CONFIG_FILE | awk -F" " '{print $4}' | awk -F"\"" '{print $2}')
+
+BACKGROUNDS=`ls -1 "$BACKGROUND_DIR"`
+N=`echo $BACKGROUNDS | wc -w`
+((N=RANDOM%N+1))
+
+# The -i.old option creates a backup copy called
+# kdmrc.old
+BACKGROUND=$(echo $BACKGROUNDS | cut -d ' ' -f $N)
+sed -i.old "s|$BACKGROUND_1|$BACKGROUND_DIR/$BACKGROUND|" $CONFIG_FILE
+
+chown -R $YOUR_USER:users $CONFIG_FILE
+
+echo " Enjoy your new background :-) "
+
+
