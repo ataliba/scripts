@@ -2,7 +2,7 @@
 # 
 # File      : inodealert.py 
 # Author    : Ataliba Teixeira < https://github.com/ataliba  >  
-# Version   : 0.2 
+# Version   : 0.2.1 
 # About     : put this shell script on your Linux system to monitoring
 #             the use of inodes on your system. It's a good script to 
 #             use in boxes had a big number of small files, like systems 
@@ -17,6 +17,8 @@
 # Changelog :
 #	      Version 0.2 
 #		Insert an smtp before create  / Create the shell object on this script
+#	      Version 0.2.1 
+#	 	Some changes on code to solve errors
 #
 
 import string 
@@ -24,7 +26,7 @@ import os
 import sys 
 import smtplib 
 from subprocess import Popen, PIPE
-from email.Message import Message
+from email.MIMEText import MIMEText
 
 # Don't change nothing
 File="/proc/sys/fs/inode-nr"
@@ -32,23 +34,6 @@ File="/proc/sys/fs/inode-nr"
 # Change this 
 From = 'from@from.com' 
 To = 'to@to.com'
-
-# Simple function to send e-mail 
-
-def SendEmail(error, message):
-	
-	msg = Message()
-	msg['Subject'] = error
-
-	msg.set_payload(message)
-
-
-	try:
-		smtpObj = smtplib.SMTP('localhost')
-		smtpObj.sendmail(From, To, msg)         
-		print "Successfully sent email"
-	except SMTPException:
-		print "Error: unable to send email" 
 
 # Objects to use on shell 
 class Cmd(object):
@@ -62,6 +47,27 @@ class Cmd(object):
 class Sh(object):
     def __getattr__(self, attribute):
         return Cmd(attribute)
+
+
+# Simple function to send e-mail 
+
+def SendEmail(error, message):
+
+	
+   	msg = MIMEText("%s"% message)
+	msg['Subject'] = error
+   	msg['From'] = From
+   	msg['To'] = To
+
+	sh = Sh()
+
+	try:
+		smtpObj = smtplib.SMTP('localhost')
+		smtpObj.sendmail(From, To, msg.as_string())         
+		sh.logger("InodeAlert Successfully sent email")
+		smtpObj.quit()
+	except smtplib.SMTPException:
+		sh.logger("InodeAlert Error: unable to send email")
 
 
 
