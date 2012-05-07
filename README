@@ -1,7 +1,7 @@
 Scripts 
 
 -> f.lux install : simple script to install the f.lux ( http://stereopsis.com/flux/ )  on your linux 
--> criamp3.php -> script to create mp3 files in php
--> c2play -> random interface for mpg123 ou mpg321 in php 
--> agenda.php -> list of addressess in php 
-  
+-> criamp3.php : script to create mp3 files in php
+-> c2play : random interface for mpg123 ou mpg321 in php 
+-> agenda.php : list of addressess in php 
+-> Inodealert : inodealert script ( script to monitoring your filesystem inode number )   
