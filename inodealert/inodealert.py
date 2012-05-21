@@ -85,10 +85,10 @@ if Percent > 75:
 	SendEmail('You had reached 75% of you filesystem inodes','You had reached 75% of your filesystem inodes. You need to clean some files.')
 	sh.logger("InodeAlert This is a warning: You had reached 75% of you filesystem inodes")
 elif Percent > 85: 
-	SendEmail('You had reached 85% of you filesystem inodes','You had reached 75% of your filesystem inodes. You need to clean some files.')
+	SendEmail('You had reached 85% of you filesystem inodes','You had reached 85% of your filesystem inodes. You need to clean some files.')
 	sh.logger("InodeAlert This is a warning: You had reached 85% of you filesystem inodes")
 elif Percent > 90:
-	SendEmail('You had reached 90% of you filesystem inodes','You had reached 75% of your filesystem inodes. You need to clean some files.')
+	SendEmail('You had reached 90% of you filesystem inodes','You had reached 90% of your filesystem inodes. You need to clean some files.')
 	sh.logger("InodeAlert Critical: You had reached 90% of you filesystem inodes")
 else:
 	sh.logger("InodeAlert The number of inodes on your system are ok ")
